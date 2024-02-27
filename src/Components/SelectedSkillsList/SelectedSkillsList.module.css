@@ -1,0 +1,45 @@
+.selectedSkillsListWrapper {
+  max-width: 717px;
+  background: #fff;
+  padding: 64px;
+  border-radius: 15px;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 392px 133px;
+  gap: 64px;
+}
+
+
+.selectedSkill {
+  background: #0D2167;
+  border-radius: 15px;
+  max-width: 392px;
+  color: #fff;
+  padding: 16px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.selectedSkill svg {
+  position: absolute;
+  right: 17px;
+  bottom: 12px;
+  width: 30px;
+  height: 30px;
+}
+
+.sugegestedSkills li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  color: #5A6793;
+}
+
+svg {
+  cursor: pointer;
+}
+
+.sugegestedSkills p {
+  margin-bottom: 5px;
+  color:  #0D2167;
+}
