@@ -1,3 +1,7 @@
+svg {
+  cursor: pointer;
+}
+
 .selectedSkillsListWrapper {
   max-width: 717px;
   background: #fff;
@@ -28,6 +32,22 @@
   height: 30px;
 }
 
-svg {
+select {
   cursor: pointer;
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 15px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background: #F7F7FA;
+  border: 1px solid #E3E5F1;
+}
+
+select:focus {
+  border: none;
+  outline: none;
+  border: 1px solid #E3E5F1;
 }
