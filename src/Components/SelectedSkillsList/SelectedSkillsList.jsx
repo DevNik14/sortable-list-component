@@ -1,6 +1,6 @@
-import Plus from '../Plus';
 import Delete from '../Delete';
 import styles from './SelectedSkillsList.module.css';
+import SuggestedSkills from '../SugegestedSkills/SugegestedSkills';
 
 const SelectedSkillsList = () => {
   return (
@@ -19,17 +19,7 @@ const SelectedSkillsList = () => {
           <Delete />
         </div>
       </div>
-      <div className={`${styles.sugegestedSkills}`}>
-        <p>Suggested Skills</p>
-        <ul>
-          <li><Plus />HTML</li>
-          <li><Plus />CSS</li>
-          <li><Plus />Bootstrap</li>
-          <li><Plus />TypeScript</li>
-          <li><Plus />Vue</li>
-          <li><Plus />Angular</li>
-        </ul>
-      </div>
+      <SuggestedSkills />
     </section>
   )
 }

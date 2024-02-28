@@ -1,0 +1,11 @@
+.sugegestedSkills li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  color: #5A6793;
+}
+
+.sugegestedSkills p {
+  margin-bottom: 5px;
+  color:  #0D2167;
+}
