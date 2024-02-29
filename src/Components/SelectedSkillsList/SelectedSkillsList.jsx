@@ -2,6 +2,7 @@ import Delete from '../Delete';
 import Down from '../Down';
 import styles from './SelectedSkillsList.module.css';
 import SuggestedSkills from '../SugegestedSkills/SugegestedSkills';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const SelectedSkillsList = () => {
   return (
@@ -19,14 +20,16 @@ const SelectedSkillsList = () => {
           3. NextJS
           <Delete />
         </div>
-        <div>
+        <div className={`${styles.customSelect}`}>
+        <Down />
           <select name="">
             <option>ReactJS</option>
             <option>React Native</option>
             <option>React Redux</option>
           </select>
         </div>
-        <div>
+        <div className={`${styles.customSelect}`}>
+        <Down />
           <select name="">
             <option>NodeJS</option>
             <option>ExpressJS</option>
