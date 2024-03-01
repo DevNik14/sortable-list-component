@@ -5,6 +5,7 @@ import SuggestedSkills from '../SugegestedSkills/SugegestedSkills';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const SelectedSkillsList = () => {
+  const suggestedSKillsList = ['HTML', 'CSS', 'Bootstrap', 'TypeScript', 'Vue', 'Angular'];
   return (
     <section className={`${styles.selectedSkillsListWrapper}`}>
       <div className={`${styles.skills}`}>
@@ -30,14 +31,14 @@ const SelectedSkillsList = () => {
         </div>
         <div className={`${styles.customSelect}`}>
         <Down />
-          <select name="">
+          <select name="" disabled>
             <option>NodeJS</option>
             <option>ExpressJS</option>
             <option>React Redux</option>
           </select>
         </div>
       </div>
-      <SuggestedSkills />
+      <SuggestedSkills suggestedSKillsList={suggestedSKillsList}/>
     </section>
   )
 }
