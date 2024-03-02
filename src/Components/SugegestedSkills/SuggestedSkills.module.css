@@ -1,8 +1,16 @@
 .sugegestedSkills li {
-  display: flex;
-  align-items: center;
   margin-bottom: 5px;
   color: #5A6793;
+  position: relative;
+  width: 100%;
+  height: 24px;
+}
+
+.sugegestedSkills li span {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: -5px;
 }
 
 .sugegestedSkills p {

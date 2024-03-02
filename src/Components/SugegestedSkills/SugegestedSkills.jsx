@@ -6,7 +6,7 @@ const SuggestedSkills = ({suggestedSKillsList}) => {
     <div className={`${styles.sugegestedSkills}`}>
       <p>Suggested Skills</p>
       <ul>
-        {suggestedSKillsList.map(skill => <li key={skill}><Plus />{skill}</li>)}
+        {suggestedSKillsList.map(skill => <li key={skill}><span><Plus />{skill}</span></li>)}
       </ul>
     </div>
   )
