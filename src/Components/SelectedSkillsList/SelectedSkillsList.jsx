@@ -20,13 +20,18 @@ const SelectedSkillsList = () => {
     }
   }
 
+  const deleteSkillHandler = (e) => {
+    const skillToBeDeleted = e.currentTarget.parentNode.textContent.split('. ')[1];
+    setSelectedSKillList(oldState => oldState.filter(skill => skill !== skillToBeDeleted));
+  }
+
   return (
     <section className={`${styles.selectedSkillsListWrapper}`}>
       <ul className={`${styles.skills}`}>
         {selectedSKillList.map((skill, i) => <li key={skill}>
           <div className={`${styles.selectedSkill}`}>
           {i + 1}. {skill}
-          <Delete />
+          <Delete deleteHandler={deleteSkillHandler}/>
         </div>
         </li>)}
         <div className={`${styles.customSelect}`}>
