@@ -1,26 +1,34 @@
+import { useState } from 'react';
+
 import Delete from '../Delete';
 import Down from '../Down';
-import styles from './SelectedSkillsList.module.css';
 import SuggestedSkills from '../SugegestedSkills/SugegestedSkills';
+
+import styles from './SelectedSkillsList.module.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const SelectedSkillsList = () => {
   const suggestedSKillsList = ['HTML', 'CSS', 'Bootstrap', 'TypeScript', 'Vue', 'Angular'];
+  const [selectedSKillList, setSelectedSKillList] = useState([]);
+
+  const selectSkillHandler = (e) => {
+    const selectedSKill = e.currentTarget.textContent;
+    if(selectedSKillList.includes(selectedSKill)) {
+      console.log('This skill already have been added');
+    } else {
+      setSelectedSKillList(oldState => [...oldState, selectedSKill]);
+    }
+  }
+
   return (
     <section className={`${styles.selectedSkillsListWrapper}`}>
-      <div className={`${styles.skills}`}>
-        <div className={`${styles.selectedSkill}`}>
-          1. JavaScript
+      <ul className={`${styles.skills}`}>
+        {selectedSKillList.map((skill, i) => <li key={skill}>
+          <div className={`${styles.selectedSkill}`}>
+          {i + 1}. {skill}
           <Delete />
         </div>
-        <div className={`${styles.selectedSkill}`}>
-          2. React
-          <Delete />
-        </div>
-        <div className={`${styles.selectedSkill}`}>
-          3. NextJS
-          <Delete />
-        </div>
+        </li>)}
         <div className={`${styles.customSelect}`}>
         <Down />
           <select name="">
@@ -37,8 +45,8 @@ const SelectedSkillsList = () => {
             <option>React Redux</option>
           </select>
         </div>
-      </div>
-      <SuggestedSkills suggestedSKillsList={suggestedSKillsList}/>
+      </ul>
+      <SuggestedSkills suggestedSKillsList={suggestedSKillsList} selectSkillHandler={selectSkillHandler}/>
     </section>
   )
 }

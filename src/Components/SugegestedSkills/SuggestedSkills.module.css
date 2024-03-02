@@ -4,6 +4,7 @@
   position: relative;
   width: 100%;
   height: 24px;
+  cursor: pointer;
 }
 
 .sugegestedSkills li span {
