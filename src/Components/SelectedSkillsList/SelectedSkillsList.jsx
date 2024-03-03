@@ -9,7 +9,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const SelectedSkillsList = () => {
   const suggestedSKillsList = ['HTML', 'CSS', 'Bootstrap', 'TypeScript', 'Vue', 'Angular'];
-  const [selectedSKillList, setSelectedSKillList] = useState({
+  const [selectedSkillList, setSelectedSkillList] = useState({
     firstSkill: '',
     secondSkill: '',
     thirdSkill: '',
@@ -18,19 +18,31 @@ const SelectedSkillsList = () => {
   });
 
   const selectSkillHandler = (e) => {
-    const selectedSKill = e.target.value;
-    if (Object.values(selectedSKillList).includes(selectedSKill)) {
+    const selectedSkill = e.target.value;
+    if (Object.values(selectedSkillList).includes(selectedSkill)) {
       console.log('This skill already have been added');
     } else {
-      setSelectedSKillList(oldState => (
-        {...oldState, [e.target.name]: selectedSKill}
+      setSelectedSkillList(oldState => (
+        {...oldState, [e.target.name]: selectedSkill}
       ));
+    }
+  }
+
+  const addSugestedSkillHandler = (e) => {
+    const selectedSkill = e.currentTarget.textContent;
+    if (Object.values(selectedSkillList).includes(selectedSkill)) {
+      console.log('This skill already have been added');
+    } else {
+      setSelectedSkillList(oldState => {
+        const emptyValue = Object.entries(oldState).find(el => el[1] === '')[0];
+        return {...oldState, [emptyValue]: selectedSkill}
+      });
     }
   }
 
   const deleteSkillHandler = (e) => {
     const skillToBeDeleted = e.currentTarget.parentNode.classList[1];
-    setSelectedSKillList(oldState => (
+    setSelectedSkillList(oldState => (
       {...oldState, [skillToBeDeleted]: ''}
     ));
   }
@@ -38,18 +50,18 @@ const SelectedSkillsList = () => {
   return (
     <section className={`${styles.selectedSkillsListWrapper}`}>
       <ul className={`${styles.skills}`}>
-        {Object.keys(selectedSKillList).map((skill, i) =>
+        {Object.keys(selectedSkillList).map((skill, i) =>
           <li key={skill}>
-            {selectedSKillList[skill]
+            {selectedSkillList[skill]
               ? <div className={`${styles.selectedSkill} ${skill}`}>
-                {i + 1}. {selectedSKillList[skill]}
+                {i + 1}. {selectedSkillList[skill]}
                 <span onClick={deleteSkillHandler}>
                   <Delete />
                 </span>
               </div>
               : <div className={`${styles.customSelect}`}>
                 <Down deleteSkillHandler={deleteSkillHandler}/>
-                <select name={skill} onChange={selectSkillHandler} value={selectedSKillList[skill]}>
+                <select name={skill} onChange={selectSkillHandler} value={selectedSkillList[skill]}>
                   <option value="add skill">Add Skill</option>
                   <option value="ReactJS">ReactJS</option>
                   <option value="React Native">React Native</option>
@@ -61,7 +73,7 @@ const SelectedSkillsList = () => {
           </li>
         )}
       </ul>
-      <SuggestedSkills suggestedSKillsList={suggestedSKillsList} selectSkillHandler={selectSkillHandler} />
+      <SuggestedSkills suggestedSKillsList={suggestedSKillsList} addSugestedSkillHandler={addSugestedSkillHandler} />
     </section>
   )
 }
