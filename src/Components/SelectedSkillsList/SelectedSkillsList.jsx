@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Delete from '../Delete';
 import Down from '../Down';
 import SuggestedSkills from '../SugegestedSkills/SugegestedSkills';
+import skillList from '../../skillList.json';
 
 import styles from './SelectedSkillsList.module.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -16,6 +17,8 @@ const SelectedSkillsList = () => {
     fourthSkill: '',
     fifthSkill: ''
   });
+
+  const skillKeys = Object.keys(skillList);
 
   const selectSkillHandler = (e) => {
     const selectedSkill = e.target.value;
@@ -68,10 +71,14 @@ const SelectedSkillsList = () => {
                 <Down deleteSkillHandler={deleteSkillHandler}/>
                 <select name={skill} onChange={selectSkillHandler} value={selectedSkillList[skill]}>
                   <option value="add skill">Add Skill</option>
-                  <option value="ReactJS">ReactJS</option>
-                  <option value="React Native">React Native</option>
-                  <option value="React Redux">React Redux</option>
-                  <option value="NodeJS">NodeJS</option>
+                  {/* <option value="ReactJS">ReactJS</option> */}
+                  {
+                    skillKeys.map(key => 
+                      skillList[key].map(skill => {
+                        return <option key={skill} value={skill}>{skill}</option>
+                      })
+                    )
+                  }
                 </select>
               </div>
             }

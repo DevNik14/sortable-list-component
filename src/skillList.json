@@ -1,0 +1,55 @@
+{
+  "languages": [
+    "Java",
+    "Python",
+    "JavaScript",
+    "C#",
+    "C++",
+    "Ruby",
+    "PHP"
+  ],
+  "webDevelopment": [
+    "HTML/CSS",
+    "React",
+    "Node.js",
+    "Express.js",
+    "Django",
+    "Flask"
+  ],
+  "databaseManagement": [
+    "MySQL",
+    "PostgreSQL",
+    "SQLite",
+    "MongoDB"
+  ],
+  "versionControl": [
+    "Git",
+    "GitHub",
+    "GitLab",
+    "Bitbucket"
+  ],
+  "devMethodologies": [
+    "Agile",
+    "Scrum",
+    "Kanban"
+  ],
+  "testingAndDebugging": [
+    "Unit testing",
+    "Integration testing"
+  ],
+  "devOpsAndDeployment": [
+    "Docker",
+    "Kubernetes",
+    "Continuous Integration/Continuous Deployment (CI/CD)"
+  ],
+  "mobileAppDevelopment": [
+    "Kotlin",
+    "Swift",
+    "React Native"
+  ],
+  "cloudComputing": [
+    "Amazon Web Services (AWS)",
+    "Microsoft Azure",
+    "Google Cloud Platform (GCP)"
+  ]
+}
