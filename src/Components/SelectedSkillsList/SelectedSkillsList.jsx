@@ -26,7 +26,7 @@ const SelectedSkillsList = () => {
       console.log('This skill already have been added');
     } else {
       setSelectedSkillList(oldState => (
-        {...oldState, [e.target.name]: selectedSkill}
+        { ...oldState, [e.target.name]: selectedSkill }
       ));
     }
   }
@@ -34,7 +34,7 @@ const SelectedSkillsList = () => {
   const addSugestedSkillHandler = (e) => {
     const selectedSkill = e.currentTarget.textContent;
     const skillValues = Object.values(selectedSkillList);
-    if(skillValues.every(value => value !== '')) {
+    if (skillValues.every(value => value !== '')) {
       console.log('Cann\'t add more skills');
       return;
     }
@@ -43,7 +43,7 @@ const SelectedSkillsList = () => {
     } else {
       setSelectedSkillList(oldState => {
         const emptyValue = Object.entries(oldState).find(el => el[1] === '')[0];
-        return {...oldState, [emptyValue]: selectedSkill}
+        return { ...oldState, [emptyValue]: selectedSkill }
       });
     }
   }
@@ -51,8 +51,12 @@ const SelectedSkillsList = () => {
   const deleteSkillHandler = (e) => {
     const skillToBeDeleted = e.currentTarget.parentNode.classList[1];
     setSelectedSkillList(oldState => (
-      {...oldState, [skillToBeDeleted]: ''}
+      { ...oldState, [skillToBeDeleted]: '' }
     ));
+  }
+
+  const filterInputSkillText = (e) => {
+    console.log(selectedSkillList[e.target.name]);
   }
 
   return (
@@ -69,16 +73,21 @@ const SelectedSkillsList = () => {
               </div>
               : <div className={`${styles.customSelect}`}>
                 <Down deleteSkillHandler={deleteSkillHandler} />
-                <select name={skill} onChange={selectSkillHandler} value={`${selectedSkillList[skill]}`}>
+                <input type="text" placeholder={`${i + 1}. Add skill`} name={skill}
+                  onChange={filterInputSkillText}
+                  value={`${selectedSkillList[skill]}`}
+                  onBlur={selectSkillHandler}
+                />
+                {/* <select name={skill} onChange={selectSkillHandler} value={`${selectedSkillList[skill]}`}>
                   <option value="add skill">Add Skill</option>
                   {
-                    skillKeys.map(key => 
+                    skillKeys.map(key =>
                       skillList[key].map(skill => {
                         return <option key={skill} value={skill}>{skill}</option>
                       })
                     )
                   }
-                </select>
+                </select> */}
               </div>
             }
           </li>
