@@ -1,3 +1,7 @@
+.selectedSkillItem {
+  min-height: 65px;
+}
+
 svg {
   cursor: pointer;
 }

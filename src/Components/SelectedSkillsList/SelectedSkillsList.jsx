@@ -59,7 +59,7 @@ const SelectedSkillsList = () => {
     <section className={`${styles.selectedSkillsListWrapper}`}>
       <ul className={`${styles.skills}`}>
         {Object.keys(selectedSkillList).map((skill, i) =>
-          <li key={skill}>
+          <li key={skill} className={styles.selectedSkillItem}>
             {selectedSkillList[skill]
               ? <div className={`${styles.selectedSkill} ${skill}`}>
                 {i + 1}. {selectedSkillList[skill]}
@@ -68,10 +68,9 @@ const SelectedSkillsList = () => {
                 </span>
               </div>
               : <div className={`${styles.customSelect}`}>
-                <Down deleteSkillHandler={deleteSkillHandler}/>
-                <select name={skill} onChange={selectSkillHandler} value={selectedSkillList[skill]}>
+                <Down deleteSkillHandler={deleteSkillHandler} />
+                <select name={skill} onChange={selectSkillHandler} value={`${selectedSkillList[skill]}`}>
                   <option value="add skill">Add Skill</option>
-                  {/* <option value="ReactJS">ReactJS</option> */}
                   {
                     skillKeys.map(key => 
                       skillList[key].map(skill => {
