@@ -31,6 +31,17 @@ const SelectedSkillsList = () => {
     }
   }
 
+  const filterInputSkillText = (e) => {
+    const matches = skillKeys.map(key =>
+      skillList[key].filter(skill => {
+        const isMatch = skill.toLowerCase().includes(e.target.value.toLowerCase());
+        return isMatch && skill;
+        // return <option key={skill} value={skill}>{skill}</option>
+      })
+    )
+    console.log(matches);
+  }
+
   const addSugestedSkillHandler = (e) => {
     const selectedSkill = e.currentTarget.textContent;
     const skillValues = Object.values(selectedSkillList);
@@ -53,10 +64,6 @@ const SelectedSkillsList = () => {
     setSelectedSkillList(oldState => (
       { ...oldState, [skillToBeDeleted]: '' }
     ));
-  }
-
-  const filterInputSkillText = (e) => {
-    console.log(selectedSkillList[e.target.name]);
   }
 
   return (
