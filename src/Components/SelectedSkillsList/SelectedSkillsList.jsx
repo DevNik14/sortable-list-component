@@ -11,27 +11,31 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 const SelectedSkillsList = () => {
   const suggestedSKillsList = ['HTML', 'CSS', 'Bootstrap', 'TypeScript', 'Vue', 'Angular'];
   const [selectedSkillList, setSelectedSkillList] = useState({
-    firstSkill: '',
-    secondSkill: '',
-    thirdSkill: '',
-    fourthSkill: '',
-    fifthSkill: ''
+    firstSkill: ['', ''],
+    secondSkill: ['', ''],
+    thirdSkill: ['', ''],
+    fourthSkill: ['', ''],
+    fifthSkill: ['', '']
   });
 
   const skillKeys = Object.keys(skillList);
 
   const selectSkillHandler = (e) => {
     const selectedSkill = e.target.value;
-    if (Object.values(selectedSkillList).includes(selectedSkill)) {
+    if (Object.values(selectedSkillList)[0].includes(selectedSkill)) {
       console.log('This skill already have been added');
     } else {
       setSelectedSkillList(oldState => (
-        { ...oldState, [e.target.name]: selectedSkill }
+        { ...oldState, [e.target.name]: [selectedSkill, selectedSkill] }
       ));
     }
   }
 
   const filterInputSkillText = (e) => {
+    const selectedSkill = e.target.value;
+    setSelectedSkillList(oldState => (
+      { ...oldState, [e.target.name]: ['', selectedSkill] }
+    ));
     const matches = skillKeys.map(key =>
       skillList[key].filter(skill => {
         const isMatch = skill.toLowerCase().includes(e.target.value.toLowerCase());
@@ -44,17 +48,17 @@ const SelectedSkillsList = () => {
 
   const addSugestedSkillHandler = (e) => {
     const selectedSkill = e.currentTarget.textContent;
-    const skillValues = Object.values(selectedSkillList);
+    const skillValues = Object.values(selectedSkillList)[0];
     if (skillValues.every(value => value !== '')) {
-      console.log('Cann\'t add more skills');
+      console.log('Can\'t add more skills');
       return;
     }
-    if (skillValues.includes(selectedSkill)) {
+    if (skillValues.includes(selectedSkill)[0]) {
       console.log('This skill already have been added');
     } else {
       setSelectedSkillList(oldState => {
         const emptyValue = Object.entries(oldState).find(el => el[1] === '')[0];
-        return { ...oldState, [emptyValue]: selectedSkill }
+        return { ...oldState, [emptyValue]: [selectedSkill, ''] }
       });
     }
   }
@@ -62,7 +66,7 @@ const SelectedSkillsList = () => {
   const deleteSkillHandler = (e) => {
     const skillToBeDeleted = e.currentTarget.parentNode.classList[1];
     setSelectedSkillList(oldState => (
-      { ...oldState, [skillToBeDeleted]: '' }
+      { ...oldState, [skillToBeDeleted]: ['', ''] }
     ));
   }
 
@@ -71,9 +75,9 @@ const SelectedSkillsList = () => {
       <ul className={`${styles.skills}`}>
         {Object.keys(selectedSkillList).map((skill, i) =>
           <li key={skill} className={styles.selectedSkillItem}>
-            {selectedSkillList[skill]
+            {selectedSkillList[skill][0]
               ? <div className={`${styles.selectedSkill} ${skill}`}>
-                {i + 1}. {selectedSkillList[skill]}
+                {i + 1}. {selectedSkillList[skill][0]}
                 <span onClick={deleteSkillHandler}>
                   <Delete />
                 </span>
@@ -82,7 +86,7 @@ const SelectedSkillsList = () => {
                 <Down deleteSkillHandler={deleteSkillHandler} />
                 <input type="text" placeholder={`${i + 1}. Add skill`} name={skill}
                   onChange={filterInputSkillText}
-                  value={`${selectedSkillList[skill]}`}
+                  value={`${selectedSkillList[skill][1]}`}
                   onBlur={selectSkillHandler}
                 />
                 {/* <select name={skill} onChange={selectSkillHandler} value={`${selectedSkillList[skill]}`}>
