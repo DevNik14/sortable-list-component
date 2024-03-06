@@ -57,7 +57,7 @@ const SelectedSkillsList = () => {
       console.log('This skill already have been added');
     } else {
       setSelectedSkillList(oldState => {
-        const emptyValue = Object.entries(oldState).find(el => el[1] === '')[0];
+        const emptyValue = Object.entries(oldState).find(el => el[1][0] === '')[0];
         return { ...oldState, [emptyValue]: [selectedSkill, ''] }
       });
     }
