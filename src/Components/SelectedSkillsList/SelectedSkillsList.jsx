@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import Delete from '../Delete';
-import Down from '../Down';
 import SkillInput from '../SkillInput/SkillInput';
 import SuggestedSkills from '../SugegestedSkills/SugegestedSkills';
 import skillList from '../../skillList.json';
@@ -84,7 +83,6 @@ const SelectedSkillsList = () => {
                 </span>
               </div>
               : <div className={`${styles.customSelect}`}>
-                <Down deleteSkillHandler={deleteSkillHandler} />
                 <SkillInput
                   i={i}
                   skill={skill}
