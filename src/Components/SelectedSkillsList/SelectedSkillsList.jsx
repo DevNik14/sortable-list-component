@@ -82,15 +82,13 @@ const SelectedSkillsList = () => {
                   <Delete />
                 </span>
               </div>
-              : <div className={`${styles.customSelect}`}>
-                <SkillInput
-                  i={i}
-                  skill={skill}
-                  filterInputSkillTextHandler={filterInputSkillTextHandler}
-                  value={selectedSkillList[skill][1]}
-                  selectSkillHandler={selectSkillHandler}
-                />
-              </div>
+              : <SkillInput
+                i={i}
+                skill={skill}
+                filterInputSkillTextHandler={filterInputSkillTextHandler}
+                value={selectedSkillList[skill][1]}
+                selectSkillHandler={selectSkillHandler}
+              />
             }
           </li>
         )}
