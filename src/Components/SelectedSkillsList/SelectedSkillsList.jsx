@@ -24,7 +24,7 @@ const SelectedSkillsList = () => {
       console.log('This skill already have been added');
     } else {
       setSelectedSkillList(oldState => (
-        { ...oldState, [e.target.name]: [selectedSkill, selectedSkill] }
+        { ...oldState, [e.target.name]: [selectedSkill, ''] }
       ));
     }
   }
