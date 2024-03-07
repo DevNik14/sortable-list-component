@@ -7,7 +7,7 @@ const SuggestedSkills = ({ suggestedSKillsList, addSugestedSkillHandler }) => {
       <p>Suggested Skills</p>
       <ul>
         {suggestedSKillsList.map(skill =>
-          <li key={skill} onClick={addSugestedSkillHandler.bind(null)}>
+          <li key={skill} onClick={addSugestedSkillHandler}>
             <span><Plus />{skill}</span>
           </li>
         )}

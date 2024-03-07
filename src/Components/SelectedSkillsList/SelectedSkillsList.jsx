@@ -52,8 +52,7 @@ const SelectedSkillsList = () => {
     if (skillValues.every(value => value !== '')) {
       console.log('Can\'t add more skills');
       return;
-    }
-    if (skillValues.includes(selectedSkill)[0]) {
+    } else if (skillValues.includes(selectedSkill)[0]) {
       console.log('This skill already have been added');
     } else {
       setSelectedSkillList(oldState => {
