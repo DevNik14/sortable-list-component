@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import Delete from '../Delete';
 import Down from '../Down';
+import SkillInput from '../SkillInput/SkillInput';
 import SuggestedSkills from '../SugegestedSkills/SugegestedSkills';
 import skillList from '../../skillList.json';
 
@@ -31,7 +32,7 @@ const SelectedSkillsList = () => {
     }
   }
 
-  const filterInputSkillText = (e) => {
+  const filterInputSkillTextHandler = (e) => {
     const selectedSkill = e.target.value;
     setSelectedSkillList(oldState => (
       { ...oldState, [e.target.name]: ['', selectedSkill] }
@@ -84,21 +85,13 @@ const SelectedSkillsList = () => {
               </div>
               : <div className={`${styles.customSelect}`}>
                 <Down deleteSkillHandler={deleteSkillHandler} />
-                <input type="text" placeholder={`${i + 1}. Add skill`} name={skill}
-                  onChange={filterInputSkillText}
-                  value={`${selectedSkillList[skill][1]}`}
-                  onBlur={selectSkillHandler}
+                <SkillInput
+                  i={i}
+                  skill={skill}
+                  filterInputSkillTextHandler={filterInputSkillTextHandler}
+                  value={selectedSkillList[skill][1]}
+                  selectSkillHandler={selectSkillHandler}
                 />
-                {/* <select name={skill} onChange={selectSkillHandler} value={`${selectedSkillList[skill]}`}>
-                  <option value="add skill">Add Skill</option>
-                  {
-                    skillKeys.map(key =>
-                      skillList[key].map(skill => {
-                        return <option key={skill} value={skill}>{skill}</option>
-                      })
-                    )
-                  }
-                </select> */}
               </div>
             }
           </li>
