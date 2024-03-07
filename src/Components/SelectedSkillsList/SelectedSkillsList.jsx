@@ -18,8 +18,6 @@ const SelectedSkillsList = () => {
     fifthSkill: ['', '']
   });
 
-  const skillKeys = Object.keys(skillList);
-
   const selectSkillHandler = (e) => {
     const selectedSkill = e.target.value;
     if (Object.values(selectedSkillList)[0].includes(selectedSkill)) {
@@ -36,13 +34,7 @@ const SelectedSkillsList = () => {
     setSelectedSkillList(oldState => (
       { ...oldState, [e.target.name]: ['', selectedSkill] }
     ));
-    const matches = skillKeys.map(key =>
-      skillList[key].filter(skill => {
-        const isMatch = skill.toLowerCase().includes(e.target.value.toLowerCase());
-        return isMatch && skill;
-        // return <option key={skill} value={skill}>{skill}</option>
-      })
-    )
+    const matches = skillList.filter(skill => skill.toLowerCase().includes(e.target.value.toLowerCase()));
     console.log(matches);
   }
 
