@@ -1,54 +1,35 @@
-{
-  "languages": [
+[
     "Java",
     "Python",
     "JavaScript",
     "C#",
     "C++",
     "Ruby",
-    "PHP"
-  ],
-  "webDevelopment": [
+    "PHP",
     "React",
     "Node.js",
     "Express.js",
     "Django",
-    "Flask"
-  ],
-  "databaseManagement": [
+    "Flask",
     "MySQL",
     "PostgreSQL",
     "SQLite",
-    "MongoDB"
-  ],
-  "versionControl": [
+    "MongoDB",
     "Git",
     "GitHub",
     "GitLab",
-    "Bitbucket"
-  ],
-  "devMethodologies": [
+    "Bitbucket",
     "Agile",
     "Scrum",
-    "Kanban"
-  ],
-  "testingAndDebugging": [
+    "Kanban",
     "Unit testing",
-    "Integration testing"
-  ],
-  "devOpsAndDeployment": [
+    "Integration testing",
     "Docker",
     "Kubernetes",
-    "Continuous Integration/Continuous Deployment (CI/CD)"
-  ],
-  "mobileAppDevelopment": [
+    "Continuous Integration/Continuous Deployment (CI/CD)",
     "Kotlin",
     "Swift",
-    "React Native"
-  ],
-  "cloudComputing": [
-    "Amazon Web Services (AWS)",
+    "React Native",
     "Microsoft Azure",
     "Google Cloud Platform (GCP)"
-  ]
-}
+]
