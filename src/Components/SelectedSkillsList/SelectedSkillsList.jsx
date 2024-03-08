@@ -44,14 +44,18 @@ const SelectedSkillsList = () => {
 
   const addSugestedSkillHandler = (e) => {
     const selectedSkill = e.currentTarget.textContent;
-    const skillValues = Object.values(selectedSkillList)[0];
-    const emptyValuesLen = Object.values(selectedSkillList)
+    const skillValues = Object.values(selectedSkillList);
+    const emptyValuesLen = skillValues
       .filter(value => value[0] !== null)
       .length >= 5;
+    const hadSkillAreadyBeenAdded = skillValues
+      .filter(skill => skill[0] !== null)
+      .map(subArr => subArr[0])
+      .includes(selectedSkill);
+    
     if (emptyValuesLen) {
       console.log('Can\'t add more skills');
-      return;
-    } else if (skillValues.includes(selectedSkill)[0]) {
+    } else if (hadSkillAreadyBeenAdded) {
       console.log('This skill already have been added');
     } else {
       setSelectedSkillList(oldState => {
