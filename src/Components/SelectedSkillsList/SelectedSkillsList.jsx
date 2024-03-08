@@ -11,16 +11,20 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 const SelectedSkillsList = () => {
   const suggestedSKillsList = ['HTML', 'CSS', 'Bootstrap', 'TypeScript', 'Vue', 'Angular'];
   const [selectedSkillList, setSelectedSkillList] = useState({
-    firstSkill: ['', ''],
-    secondSkill: ['', ''],
-    thirdSkill: ['', ''],
-    fourthSkill: ['', ''],
-    fifthSkill: ['', '']
+    firstSkill: [null, ''],
+    secondSkill: [null, ''],
+    thirdSkill: [null, ''],
+    fourthSkill: [null, ''],
+    fifthSkill: [null, '']
   });
 
   const selectSkillHandler = (e) => {
-    const selectedSkill = e.target.value;
-    if (Object.values(selectedSkillList)[0].includes(selectedSkill)) {
+    const selectedSkill = e.target.value.toLowerCase();
+    const hadSkillAreadyBeenAdded = Object.values(selectedSkillList)[0]
+      .map(skill => skill.toLowerCase())
+      .filter(skill => skill)
+      .includes(selectedSkill);
+    if (hadSkillAreadyBeenAdded) {
       console.log('This skill already have been added');
     } else {
       setSelectedSkillList(oldState => (
@@ -32,23 +36,23 @@ const SelectedSkillsList = () => {
   const filterInputSkillTextHandler = (e) => {
     const selectedSkill = e.target.value;
     setSelectedSkillList(oldState => (
-      { ...oldState, [e.target.name]: ['', selectedSkill] }
+      { ...oldState, [e.target.name]: [null, selectedSkill] }
     ));
     const matches = skillList.filter(skill => skill.toLowerCase().includes(e.target.value.toLowerCase()));
-    console.log(matches);
+    // console.log(matches);
   }
 
   const addSugestedSkillHandler = (e) => {
     const selectedSkill = e.currentTarget.textContent;
     const skillValues = Object.values(selectedSkillList)[0];
-    if (skillValues.every(value => value !== '')) {
+    if (skillValues.every(value => value)) {
       console.log('Can\'t add more skills');
       return;
     } else if (skillValues.includes(selectedSkill)[0]) {
       console.log('This skill already have been added');
     } else {
       setSelectedSkillList(oldState => {
-        const emptyValue = Object.entries(oldState).find(el => el[1][0] === '')[0];
+        const emptyValue = Object.entries(oldState).find(el => el[1][0] === null)[0];
         return { ...oldState, [emptyValue]: [selectedSkill, ''] }
       });
     }
@@ -57,7 +61,7 @@ const SelectedSkillsList = () => {
   const deleteSkillHandler = (e) => {
     const skillToBeDeleted = e.currentTarget.parentNode.classList[1];
     setSelectedSkillList(oldState => (
-      { ...oldState, [skillToBeDeleted]: ['', ''] }
+      { ...oldState, [skillToBeDeleted]: [null, ''] }
     ));
   }
 
