@@ -45,7 +45,10 @@ const SelectedSkillsList = () => {
   const addSugestedSkillHandler = (e) => {
     const selectedSkill = e.currentTarget.textContent;
     const skillValues = Object.values(selectedSkillList)[0];
-    if (skillValues.every(value => value)) {
+    const emptyValuesLen = Object.values(selectedSkillList)
+      .filter(value => value[0] !== null)
+      .length >= 5;
+    if (emptyValuesLen) {
       console.log('Can\'t add more skills');
       return;
     } else if (skillValues.includes(selectedSkill)[0]) {
