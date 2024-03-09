@@ -7,7 +7,7 @@ const SkillInput = ({ i, skill, filterInputSkillTextHandler, value, selectSkillH
       name={skill}
       onChange={filterInputSkillTextHandler}
       value={value}
-      onBlur={selectSkillHandler}
+      // onBlur={selectSkillHandler}
     />
   </div>
 }

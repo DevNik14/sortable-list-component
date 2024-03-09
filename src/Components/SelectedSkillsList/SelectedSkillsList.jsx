@@ -18,20 +18,20 @@ const SelectedSkillsList = () => {
     fifthSkill: [null, '']
   });
 
-  const selectSkillHandler = (e) => {
-    const selectedSkill = e.target.value.toLowerCase();
-    const hadSkillAreadyBeenAdded = Object.values(selectedSkillList)[0]
-      .map(skill => skill.toLowerCase())
-      .filter(skill => skill)
-      .includes(selectedSkill);
-    if (hadSkillAreadyBeenAdded) {
-      console.log('This skill already have been added');
-    } else {
-      setSelectedSkillList(oldState => (
-        { ...oldState, [e.target.name]: [selectedSkill, ''] }
-      ));
-    }
-  }
+  // const selectSkillHandler = (e) => {
+  //   const selectedSkill = e.target.value.toLowerCase();
+  //   const hadSkillAreadyBeenAdded = Object.values(selectedSkillList)
+  //     .map(skill => skill.toLowerCase())
+  //     .filter(skill => skill)
+  //     .includes(selectedSkill);
+  //   if (hadSkillAreadyBeenAdded) {
+  //     console.log('This skill already have been added');
+  //   } else {
+  //     setSelectedSkillList(oldState => (
+  //       { ...oldState, [e.target.name]: [selectedSkill, ''] }
+  //     ));
+  //   }
+  // }
 
   const filterInputSkillTextHandler = (e) => {
     const selectedSkill = e.target.value;
@@ -39,7 +39,7 @@ const SelectedSkillsList = () => {
       { ...oldState, [e.target.name]: [null, selectedSkill] }
     ));
     const matches = skillList.filter(skill => skill.toLowerCase().includes(e.target.value.toLowerCase()));
-    // console.log(matches);
+    return matches;
   }
 
   const addSugestedSkillHandler = (e) => {
@@ -52,7 +52,7 @@ const SelectedSkillsList = () => {
       .filter(skill => skill[0] !== null)
       .map(subArr => subArr[0])
       .includes(selectedSkill);
-    
+
     if (emptyValuesLen) {
       console.log('Can\'t add more skills');
     } else if (hadSkillAreadyBeenAdded) {
@@ -89,7 +89,7 @@ const SelectedSkillsList = () => {
                 skill={skill}
                 filterInputSkillTextHandler={filterInputSkillTextHandler}
                 value={selectedSkillList[skill][1]}
-                selectSkillHandler={selectSkillHandler}
+              // selectSkillHandler={selectSkillHandler}
               />
             }
           </li>
