@@ -10,7 +10,7 @@ svg {
   max-width: 717px;
   background: #fff;
   padding: 64px;
-  border-radius: 15px;
+  border-radius: 8px;
   text-align: left;
   display: grid;
   grid-template-columns: 392px 133px;
@@ -20,7 +20,7 @@ svg {
 
 .selectedSkill {
   background: #0D2167;
-  border-radius: 15px;
+  border-radius: 8px;
   max-width: 392px;
   color: #fff;
   padding: 16px;
