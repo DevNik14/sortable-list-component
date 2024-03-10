@@ -3,7 +3,6 @@ import { useState } from 'react';
 import Delete from '../Delete';
 import SkillInput from '../SkillInput/SkillInput';
 import SuggestedSkills from '../SugegestedSkills/SugegestedSkills';
-import skillList from '../../skillList.json';
 
 import styles from './SelectedSkillsList.module.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -33,14 +32,6 @@ const SelectedSkillsList = () => {
   //   }
   // }
 
-  const filterInputSkillTextHandler = (e) => {
-    const selectedSkill = e.target.value;
-    setSelectedSkillList(oldState => (
-      { ...oldState, [e.target.name]: [null, selectedSkill] }
-    ));
-    const matches = skillList.filter(skill => skill.toLowerCase().includes(e.target.value.toLowerCase()));
-    return matches;
-  }
 
   const addSugestedSkillHandler = (e) => {
     const selectedSkill = e.currentTarget.textContent;
@@ -87,7 +78,6 @@ const SelectedSkillsList = () => {
               : <SkillInput
                 i={i}
                 skill={skill}
-                filterInputSkillTextHandler={filterInputSkillTextHandler}
                 value={selectedSkillList[skill][1]}
               // selectSkillHandler={selectSkillHandler}
               />
