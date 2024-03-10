@@ -3,6 +3,9 @@ import { useState } from 'react';
 import Delete from '../Delete';
 import SkillInput from '../SkillInput/SkillInput';
 import SuggestedSkills from '../SugegestedSkills/SugegestedSkills';
+import DropDownSkillList from '../DropdownSkillList/DropdownSkillList';
+
+import skillList from '../../skillList.json';
 
 import styles from './SelectedSkillsList.module.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -16,6 +19,7 @@ const SelectedSkillsList = () => {
     fourthSkill: [null, ''],
     fifthSkill: [null, '']
   });
+  const [filteredSkills, setFilteredSkills] = useState([]);
 
   // const selectSkillHandler = (e) => {
   //   const selectedSkill = e.target.value.toLowerCase();
@@ -63,30 +67,44 @@ const SelectedSkillsList = () => {
     ));
   }
 
+  const filterInputSkillTextHandler = (e) => {
+    const selectedSkill = e.target.value;
+    setSelectedSkillList(oldState => (
+      {...oldState, [e.target.name]: [null, selectedSkill]}
+    ))
+    const matches = skillList.filter(skill => skill.toLowerCase().includes(selectedSkill.toLowerCase()));
+    setFilteredSkills(matches);
+    return matches;
+  }
+
   return (
-    <section className={`${styles.selectedSkillsListWrapper}`}>
-      <ul className={`${styles.skills}`}>
-        {Object.keys(selectedSkillList).map((skill, i) =>
-          <li key={skill} className={styles.selectedSkillItem}>
-            {selectedSkillList[skill][0]
-              ? <div className={`${styles.selectedSkill} ${skill}`}>
-                {i + 1}. {selectedSkillList[skill][0]}
-                <span onClick={deleteSkillHandler}>
-                  <Delete />
-                </span>
-              </div>
-              : <SkillInput
-                i={i}
-                skill={skill}
-                value={selectedSkillList[skill][1]}
-              // selectSkillHandler={selectSkillHandler}
-              />
-            }
-          </li>
-        )}
-      </ul>
-      <SuggestedSkills suggestedSKillsList={suggestedSKillsList} addSugestedSkillHandler={addSugestedSkillHandler} />
-    </section>
+    <>
+      <section className={`${styles.selectedSkillsListWrapper}`}>
+        <ul className={`${styles.skills}`}>
+          {Object.keys(selectedSkillList).map((skill, i) =>
+            <li key={skill} className={styles.selectedSkillItem}>
+              {selectedSkillList[skill][0]
+                ? <div className={`${styles.selectedSkill} ${skill}`}>
+                  {i + 1}. {selectedSkillList[skill][0]}
+                  <span onClick={deleteSkillHandler}>
+                    <Delete />
+                  </span>
+                </div>
+                : <SkillInput
+                  i={i}
+                  skill={skill}
+                  value={selectedSkillList[skill][1]}
+                  filterInputSkillTextHandler={filterInputSkillTextHandler}
+                // selectSkillHandler={selectSkillHandler}
+                />
+              }
+            </li>
+          )}
+          <DropDownSkillList filteredSkills={filteredSkills} />
+        </ul>
+        <SuggestedSkills suggestedSKillsList={suggestedSKillsList} addSugestedSkillHandler={addSugestedSkillHandler} />
+      </section>
+    </>
   )
 }
 
