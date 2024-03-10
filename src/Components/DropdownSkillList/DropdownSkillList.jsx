@@ -1,8 +1,10 @@
+import styles from './DropdownSkillList.module.css'
+
 const DropDownSkillList = ({ filteredSkills }) => {
   return (
-    <ul>
+    <ul className={`${styles.dropDownSkillList}`}>
       {filteredSkills.length > 0 && filteredSkills.map(skill => (
-        <li key={skill}>{skill}</li>
+        <li className={`${styles.dropDownSkillListItem}`} key={skill}>{skill}</li>
       ))}
     </ul>
   )

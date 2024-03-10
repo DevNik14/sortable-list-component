@@ -1,0 +1,15 @@
+.dropDownSkillList {
+  padding: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #E3E5F1;
+}
+
+.dropDownSkillListItem {
+  padding: 16px;
+  color: #5A6793;
+  cursor: pointer;
+}
+
+.dropDownSkillListItem:hover {
+  background-color: #E3E5F1;
+}
