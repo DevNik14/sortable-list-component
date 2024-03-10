@@ -1,7 +1,7 @@
 const DropDownSkillList = ({ filteredSkills }) => {
   return (
     <ul>
-      {filteredSkills && filteredSkills.map(skill => (
+      {filteredSkills.length > 0 && filteredSkills.map(skill => (
         <li key={skill}>{skill}</li>
       ))}
     </ul>
