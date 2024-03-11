@@ -70,16 +70,14 @@ const SelectedSkillsList = () => {
   const filterInputSkillTextHandler = (e) => {
     const selectedSkill = e.target.value;
     setSelectedSkillList(oldState => (
-      {...oldState, [e.target.name]: [null, selectedSkill]}
+      { ...oldState, [e.target.name]: [null, selectedSkill] }
     ))
     const matches = skillList.filter(skill => skill.toLowerCase().includes(selectedSkill.toLowerCase()));
     setFilteredSkills(matches);
     return matches;
   }
 
-  const decideIfInputNeedsToBeDisabled = function () {
-    return Object.values(selectedSkillList).map(skill => skill[0]).indexOf(null);
-  };
+  const decideIfInputNeedsToBeDisabled = () => Object.values(selectedSkillList).map(skill => skill[0]).indexOf(null)
 
   return (
     <>
@@ -100,11 +98,15 @@ const SelectedSkillsList = () => {
                   value={selectedSkillList[skill][1]}
                   filterInputSkillTextHandler={filterInputSkillTextHandler}
                   decideIfInputNeedsToBeDisabled={decideIfInputNeedsToBeDisabled}
+                  list={<DropDownSkillList
+                    i={i}
+                    filteredSkills={filteredSkills}
+                    selectSkillHandler={selectSkillHandler}
+                    decideIfInputNeedsToBeDisabled={decideIfInputNeedsToBeDisabled} />}
                 />
               }
             </li>
           )}
-          <DropDownSkillList filteredSkills={filteredSkills} selectSkillHandler={selectSkillHandler} />
         </ul>
         <SuggestedSkills suggestedSKillsList={suggestedSKillsList} addSugestedSkillHandler={addSugestedSkillHandler} />
       </section>
