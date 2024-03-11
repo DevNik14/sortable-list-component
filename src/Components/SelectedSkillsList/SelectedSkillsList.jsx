@@ -23,6 +23,10 @@ const SelectedSkillsList = () => {
 
   const selectSkillHandler = (e) => {
     const listItemValue = e.currentTarget.textContent;
+    const prop = e.currentTarget.parentNode.parentNode.children[0].name;
+    setSelectedSkillList(oldState => (
+      {...oldState, [prop]: [listItemValue, '', null]}
+    ))
     // const selectedSkill = e.target.value.toLowerCase();
     // const hadSkillAreadyBeenAdded = Object.values(selectedSkillList)
     //   .map(skill => skill.toLowerCase())
@@ -102,7 +106,7 @@ const SelectedSkillsList = () => {
                     i={i}
                     filteredSkills={filteredSkills}
                     selectSkillHandler={selectSkillHandler}
-                    isListActive={selectedSkillList[skill][2]} />}
+                    isListActive={selectedSkillList[skill][2]}/>}
                 />
               }
             </li>
