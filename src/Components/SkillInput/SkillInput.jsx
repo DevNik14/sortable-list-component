@@ -1,6 +1,6 @@
 import styles from './SkillInput.module.css';
 
-const SkillInput = ({ i, skill, value, selectSkillHandler, filterInputSkillTextHandler }) => {
+const SkillInput = ({ i, skill, value, filterInputSkillTextHandler }) => {
   return <div className={`${styles.customSelect}`}>
     <input type="text"
       placeholder={`${i + 1}. Add skill`}

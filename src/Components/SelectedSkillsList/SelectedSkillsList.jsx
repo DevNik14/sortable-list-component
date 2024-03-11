@@ -21,21 +21,21 @@ const SelectedSkillsList = () => {
   });
   const [filteredSkills, setFilteredSkills] = useState([]);
 
-  // const selectSkillHandler = (e) => {
-  //   const selectedSkill = e.target.value.toLowerCase();
-  //   const hadSkillAreadyBeenAdded = Object.values(selectedSkillList)
-  //     .map(skill => skill.toLowerCase())
-  //     .filter(skill => skill)
-  //     .includes(selectedSkill);
-  //   if (hadSkillAreadyBeenAdded) {
-  //     console.log('This skill already have been added');
-  //   } else {
-  //     setSelectedSkillList(oldState => (
-  //       { ...oldState, [e.target.name]: [selectedSkill, ''] }
-  //     ));
-  //   }
-  // }
-
+  const selectSkillHandler = (e) => {
+    const listItemValue = e.currentTarget.textContent;
+    // const selectedSkill = e.target.value.toLowerCase();
+    // const hadSkillAreadyBeenAdded = Object.values(selectedSkillList)
+    //   .map(skill => skill.toLowerCase())
+    //   .filter(skill => skill)
+    //   .includes(selectedSkill);
+    // if (hadSkillAreadyBeenAdded) {
+    //   console.log('This skill already have been added');
+    // } else {
+    //   setSelectedSkillList(oldState => (
+    //     { ...oldState, [e.target.name]: [selectedSkill, ''] }
+    //   ));
+    // }
+  }
 
   const addSugestedSkillHandler = (e) => {
     const selectedSkill = e.currentTarget.textContent;
@@ -95,12 +95,11 @@ const SelectedSkillsList = () => {
                   skill={skill}
                   value={selectedSkillList[skill][1]}
                   filterInputSkillTextHandler={filterInputSkillTextHandler}
-                // selectSkillHandler={selectSkillHandler}
                 />
               }
             </li>
           )}
-          <DropDownSkillList filteredSkills={filteredSkills} />
+          <DropDownSkillList filteredSkills={filteredSkills} selectSkillHandler={selectSkillHandler} />
         </ul>
         <SuggestedSkills suggestedSKillsList={suggestedSKillsList} addSugestedSkillHandler={addSugestedSkillHandler} />
       </section>
