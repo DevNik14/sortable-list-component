@@ -13,11 +13,11 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 const SelectedSkillsList = () => {
   const suggestedSKillsList = ['HTML', 'CSS', 'Bootstrap', 'TypeScript', 'Vue', 'Angular'];
   const [selectedSkillList, setSelectedSkillList] = useState({
-    firstSkill: [null, ''],
-    secondSkill: [null, ''],
-    thirdSkill: [null, ''],
-    fourthSkill: [null, ''],
-    fifthSkill: [null, '']
+    firstSkill: [null, '', false],
+    secondSkill: [null, '', false],
+    thirdSkill: [null, '', false],
+    fourthSkill: [null, '', false],
+    fifthSkill: [null, '', false]
   });
   const [filteredSkills, setFilteredSkills] = useState([]);
 
@@ -55,7 +55,7 @@ const SelectedSkillsList = () => {
     } else {
       setSelectedSkillList(oldState => {
         const emptyValue = Object.entries(oldState).find(el => el[1][0] === null)[0];
-        return { ...oldState, [emptyValue]: [selectedSkill, ''] }
+        return { ...oldState, [emptyValue]: [selectedSkill, '', false] }
       });
     }
   }
@@ -63,14 +63,14 @@ const SelectedSkillsList = () => {
   const deleteSkillHandler = (e) => {
     const skillToBeDeleted = e.currentTarget.parentNode.classList[1];
     setSelectedSkillList(oldState => (
-      { ...oldState, [skillToBeDeleted]: [null, ''] }
+      { ...oldState, [skillToBeDeleted]: [null, '', false] }
     ));
   }
 
   const filterInputSkillTextHandler = (e) => {
     const selectedSkill = e.target.value;
     setSelectedSkillList(oldState => (
-      { ...oldState, [e.target.name]: [null, selectedSkill] }
+      { ...oldState, [e.target.name]: [null, selectedSkill, true] }
     ))
     const matches = skillList.filter(skill => skill.toLowerCase().includes(selectedSkill.toLowerCase()));
     setFilteredSkills(matches);
@@ -102,7 +102,7 @@ const SelectedSkillsList = () => {
                     i={i}
                     filteredSkills={filteredSkills}
                     selectSkillHandler={selectSkillHandler}
-                    decideIfInputNeedsToBeDisabled={decideIfInputNeedsToBeDisabled} />}
+                    isListActive={selectedSkillList[skill][2]} />}
                 />
               }
             </li>

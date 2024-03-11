@@ -1,12 +1,12 @@
 import styles from './DropdownSkillList.module.css'
 
-const DropDownSkillList = ({ i, filteredSkills, selectSkillHandler, decideIfInputNeedsToBeDisabled }) => {
+const DropDownSkillList = ({ i, filteredSkills, selectSkillHandler, isListActive }) => {
 
   return (
     <>
       {filteredSkills.length > 0 &&
         <ul className={`${styles.dropDownSkillList} 
-      ${!(i > decideIfInputNeedsToBeDisabled.call(null)) && styles.active}`}>
+      ${isListActive && styles.active}`}>
           {filteredSkills.map(skill => (
             <li className={`${styles.dropDownSkillListItem}`}
               key={skill}
