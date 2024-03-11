@@ -77,6 +77,10 @@ const SelectedSkillsList = () => {
     return matches;
   }
 
+  const decideIfInputNeedsToBeDisabled = function () {
+    return Object.values(selectedSkillList).map(skill => skill[0]).indexOf(null);
+  };
+
   return (
     <>
       <section className={`${styles.selectedSkillsListWrapper}`}>
@@ -95,6 +99,7 @@ const SelectedSkillsList = () => {
                   skill={skill}
                   value={selectedSkillList[skill][1]}
                   filterInputSkillTextHandler={filterInputSkillTextHandler}
+                  decideIfInputNeedsToBeDisabled={decideIfInputNeedsToBeDisabled}
                 />
               }
             </li>
