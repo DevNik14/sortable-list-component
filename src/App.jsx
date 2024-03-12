@@ -4,7 +4,7 @@ import './App.css'
 function App() {
   return (
     <>
-      <h1>Select your top 5 skills</h1>
+      <h1>Select your top 5 tech skills</h1>
       <SelectedSkillsList />
     </>
   )
