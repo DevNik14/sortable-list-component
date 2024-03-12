@@ -27,18 +27,6 @@ const SelectedSkillsList = () => {
     setSelectedSkillList(oldState => (
       {...oldState, [prop]: [listItemValue, '', null]}
     ))
-    // const selectedSkill = e.target.value.toLowerCase();
-    // const hadSkillAreadyBeenAdded = Object.values(selectedSkillList)
-    //   .map(skill => skill.toLowerCase())
-    //   .filter(skill => skill)
-    //   .includes(selectedSkill);
-    // if (hadSkillAreadyBeenAdded) {
-    //   console.log('This skill already have been added');
-    // } else {
-    //   setSelectedSkillList(oldState => (
-    //     { ...oldState, [e.target.name]: [selectedSkill, ''] }
-    //   ));
-    // }
   }
 
   const addSugestedSkillHandler = (e) => {
