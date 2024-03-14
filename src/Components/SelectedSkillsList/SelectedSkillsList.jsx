@@ -76,7 +76,7 @@ const SelectedSkillsList = () => {
       <section className={`${styles.selectedSkillsListWrapper}`}>
         <ul className={`${styles.skills}`}>
           {Object.keys(selectedSkillList).map((skill, i) =>
-            <li key={skill} draggable={selectedSkillList[skill][0] !== null} onDragStart={(e) => console.log(e.dataTransfer)} className={styles.selectedSkillItem}>
+            <li key={skill} className={styles.selectedSkillItem}>
               {selectedSkillList[skill][0]
                 ? <div className={`${styles.selectedSkill} ${skill}`}>
                   {i + 1}. {selectedSkillList[skill][0]}
